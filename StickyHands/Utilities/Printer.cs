@@ -25,7 +25,7 @@ namespace Utilities
         {
             for (int row = 0; row <= Window.FrameHeight; row++)
             {
-                if (row == 0)
+                if (row <= 1)
                 {
                     Console.WriteLine();
                     // todo: Print player stats
@@ -34,10 +34,10 @@ namespace Utilities
                 char firstSymbol = Window.VerticalBorder;
                 char lastSymbol = Window.VerticalBorder;
                 char middleSymbol = Window.EmptySpace;
-                if (row == 1 || row == Window.FrameHeight)
+                if (row == 2 || row == Window.FrameHeight)
                 {
                     middleSymbol = Window.HorizontalBorder;
-                    if (row == 1)
+                    if (row == 2)
                     {
                         firstSymbol = Window.TopLeftCornerBorder;
                         lastSymbol = Window.TopRightCornerBorder;
