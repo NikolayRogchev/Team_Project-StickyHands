@@ -1,12 +1,12 @@
 ﻿using Models;
 using System;
-using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Game
 {
@@ -17,18 +17,28 @@ namespace Game
             Window consoleWindow = new Window();
             Printer printer = new Printer(consoleWindow);
             StartupHelper startupHelper = new StartupHelper(consoleWindow);
+            CoinGenerator coinGenerator = new CoinGenerator();
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            System.Threading.Timer timer = new System.Threading.Timer(t => printer.PrintTime(watch.Elapsed), null, 1000, 1000);
-            //timer.Start();
+            Random random = new Random();
+            Timer timer = new Timer(t =>
+            {
+                if (watch.Elapsed.Seconds % 3 == 0)
+                {
+                    Coin newCoin = coinGenerator.GenerateCoin(consoleWindow, random);
+                    printer.PrintCoin(newCoin);
+                }
+                printer.PrintTime(watch.Elapsed);
+            }, null, 1000, 1000);
 
             startupHelper.SetProperties();
             printer.PrintFrame();
             Player player = new Player("Nikolay");
             printer.PrintInfo(player);
-            
+
             while (true)
             {
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
@@ -36,7 +46,7 @@ namespace Game
                     printer.ClearPlayer(player);
                     player.Move(newDirection);
                     printer.PrintPlayer(player);
-                    //Thread.Sleep(10);
+
                 }
             }
         }

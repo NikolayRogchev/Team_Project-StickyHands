@@ -57,6 +57,31 @@ namespace Utilities
                 }
             }
         }
+
+        public void PrintCoins(CoinGenerator coinGenerator)
+        {
+            foreach (Coin coin in coinGenerator.Coins)
+            {
+                PrintCoin(coin);
+            }
+        }
+        public void PrintCoin(Coin coin)
+        {
+            Console.SetCursorPosition(coin.Position.X, coin.Position.Y);
+            Console.Write(coin.Symbol);
+        }
+        public void ClearCoins(CoinGenerator coinGenerator)
+        {
+            foreach (Coin coin in coinGenerator.Coins)
+            {
+                ClearCoin(coin);
+            }
+        }
+        public void ClearCoin(Coin coin)
+        {
+            Console.SetCursorPosition(coin.Position.X, coin.Position.Y);
+            Console.Write(" ");
+        }
         public void PrintPlayer(Player player)
         {
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
