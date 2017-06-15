@@ -1,11 +1,12 @@
 ﻿using Models;
 using System;
+using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Utilities;
+using System.Diagnostics;
 
 namespace Game
 {
@@ -16,10 +17,16 @@ namespace Game
             Window consoleWindow = new Window();
             Printer printer = new Printer(consoleWindow);
             StartupHelper startupHelper = new StartupHelper(consoleWindow);
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            System.Threading.Timer timer = new System.Threading.Timer(t => printer.PrintTime(watch.Elapsed), null, 1000, 1000);
+            //timer.Start();
+
             startupHelper.SetProperties();
             printer.PrintFrame();
             Player player = new Player("Nikolay");
-
+            printer.PrintInfo(player);
+            
             while (true)
             {
                 if (Console.KeyAvailable)

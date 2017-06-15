@@ -10,6 +10,7 @@ namespace Models
         {
             this.Name = name;
             this.Position = new Position(Console.WindowWidth / 2, Console.WindowHeight / 2);
+            this.CoinsCollected = new Stack<Coin>();
             this.Points = 0;
             this.Body = "O";
         }
@@ -36,6 +37,22 @@ namespace Models
                     this.Position.X++;
                     break;
             }
+        }
+
+        public string GetStats()
+        {
+            string info = GetPlayerInfo();
+            string stats = GetPlayerStats();
+            return string.Format($"{info}{Environment.NewLine}\t{stats}");
+        }
+
+        private string GetPlayerInfo()
+        {
+            return "Player: " + this.Name;
+        }
+        private string GetPlayerStats()
+        {
+            return string.Format($"Total coins collected: [{this.CoinsCollected.Count}]. Total points: [{this.Points}]");
         }
     }
 

@@ -57,17 +57,26 @@ namespace Utilities
                 }
             }
         }
-
         public void PrintPlayer(Player player)
         {
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
             Console.Write(player.Body);
         }
-
         public void ClearPlayer(Player player)
         {
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
             Console.Write(" ");
+        }
+        public void PrintInfo(Player player)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.Write(player.GetStats());
+        }
+        public void PrintTime(TimeSpan time)
+        {
+            string timeString = string.Format("Time elapsed {0:mm\\:ss}", time);
+            Console.SetCursorPosition((Console.WindowWidth - timeString.Length) / 2, 0);
+            Console.Write(timeString);
         }
     }
 }
