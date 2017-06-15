@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Models;
+using System;
 
 namespace Utilities
 {
@@ -59,6 +56,18 @@ namespace Utilities
                     Console.WriteLine($" {firstSymbol}{new string(middleSymbol, Window.Width - 2)}{lastSymbol}");
                 }
             }
+        }
+
+        public void PrintPlayer(Player player)
+        {
+            Console.SetCursorPosition(player.Position.X, player.Position.Y);
+            Console.Write(player.Body);
+        }
+
+        public void ClearPlayer(Player player)
+        {
+            Console.SetCursorPosition(player.Position.X, player.Position.Y);
+            Console.Write(" ");
         }
     }
 }

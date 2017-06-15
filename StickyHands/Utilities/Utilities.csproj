@@ -45,5 +45,11 @@
     <Compile Include="StartupHelper.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{60c59158-2d2b-4876-905a-4c32a2cf419a}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
