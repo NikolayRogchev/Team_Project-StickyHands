@@ -18,6 +18,7 @@ namespace Game
             Printer printer = new Printer(consoleWindow);
             StartupHelper startupHelper = new StartupHelper(consoleWindow);
             CoinGenerator coinGenerator = new CoinGenerator();
+            EnemyGenerator enemyGenerator = new EnemyGenerator();
             Stopwatch watch = new Stopwatch();
             watch.Start();
             Random random = new Random();
@@ -27,6 +28,10 @@ namespace Game
                 {
                     Coin newCoin = coinGenerator.GenerateCoin(consoleWindow, random);
                     printer.PrintCoin(newCoin);
+
+                    Enemy newEnemy = enemyGenerator.GenerateEnemy(consoleWindow, random);
+                    printer.PrintEnemy(newEnemy);
+
                 }
                 printer.PrintTime(watch.Elapsed);
             }, null, 1000, 1000);
