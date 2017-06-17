@@ -39,21 +39,24 @@ namespace Models
             }
         }
 
+        
         public string GetStats()
         {
             string info = GetPlayerInfo();
             string stats = GetPlayerStats();
-            return string.Format($"{info}{Environment.NewLine}\t{stats}");
+            return string.Format($"{info}{Environment.NewLine}{stats}");
+        }
+
+        public string GetPlayerStats()
+        {
+            return string.Format($"\tTotal coins collected: [{this.CoinsCollected.Count}]. Total points: [{this.Points}]");
         }
 
         private string GetPlayerInfo()
         {
             return "Player: " + this.Name;
         }
-        private string GetPlayerStats()
-        {
-            return string.Format($"Total coins collected: [{this.CoinsCollected.Count}]. Total points: [{this.Points}]");
-        }
+        
     }
 
     public enum Direction

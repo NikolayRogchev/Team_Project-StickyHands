@@ -97,6 +97,11 @@ namespace Utilities
             Console.SetCursorPosition(0, 0);
             Console.Write(player.GetStats());
         }
+        public void PrintStatsOnly(Player player)
+        {
+            Console.SetCursorPosition(0, 1);
+            Console.Write(player.GetPlayerStats());
+        }
         public void PrintTime(TimeSpan time)
         {
             string timeString = string.Format("Time elapsed {0:mm\\:ss}", time);

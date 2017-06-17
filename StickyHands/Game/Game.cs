@@ -45,6 +45,8 @@ namespace Game
                     Direction newDirection = GetDirection(key.Key);
                     printer.ClearPlayer(player);
                     player.Move(newDirection);
+                    CollectCoin(player, coinGenerator);
+                    printer.PrintStatsOnly(player);
                     printer.PrintPlayer(player);
 
                 }
@@ -70,6 +72,17 @@ namespace Game
                     break;
             }
             return resultDirection;
+        }
+
+        public static void CollectCoin(Player player, CoinGenerator coinGenerator)
+        {
+            Coin coin = coinGenerator.Coins.FirstOrDefault(c => c.Position.Equals(player.Position));
+            if (coin != null)
+            {
+                player.Points += coin.Value;
+                player.CoinsCollected.Push(coin);
+                coinGenerator.Coins.Remove(coin);
+            }
         }
     }
 }
