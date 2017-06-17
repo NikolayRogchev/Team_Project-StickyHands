@@ -70,6 +70,11 @@ namespace Utilities
             Console.SetCursorPosition(coin.Position.X, coin.Position.Y);
             Console.Write(coin.Symbol);
         }
+        public void PrintEnemy(Enemy enemy)
+        {
+            Console.SetCursorPosition(enemy.Position.X, enemy.Position.Y);
+            Console.Write(enemy.Symbol);
+        }
         public void ClearCoins(CoinGenerator coinGenerator)
         {
             foreach (Coin coin in coinGenerator.Coins)
