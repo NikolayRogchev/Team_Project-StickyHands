@@ -1,9 +1,6 @@
 ﻿using Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utilities;
 using System.Diagnostics;
 using System.Threading;
@@ -14,6 +11,9 @@ namespace Game
     {
         static void Main(string[] args)
         {
+            Console.Write("Enter your name: ");
+            Player player = new Player(Console.ReadLine());
+            Console.Clear();
             Window consoleWindow = new Window();
             Printer printer = new Printer(consoleWindow);
             StartupHelper startupHelper = new StartupHelper(consoleWindow);
@@ -31,14 +31,12 @@ namespace Game
 
                     Enemy newEnemy = enemyGenerator.GenerateEnemy(consoleWindow, random);
                     printer.PrintEnemy(newEnemy);
-
                 }
                 printer.PrintTime(watch.Elapsed);
             }, null, 1000, 1000);
 
             startupHelper.SetProperties();
             printer.PrintFrame();
-            Player player = new Player("Nikolay");
             printer.PrintInfo(player);
 
             while (true)
@@ -50,6 +48,11 @@ namespace Game
                     Direction newDirection = GetDirection(key.Key);
                     printer.ClearPlayer(player);
                     player.Move(newDirection);
+                    if (player.IsDead(consoleWindow.Height, consoleWindow.Width))
+                    {
+                        printer.EndGame(player);
+                        return;
+                    }
                     CollectCoin(player, coinGenerator);
                     printer.PrintStatsOnly(player);
                     printer.PrintPlayer(player);

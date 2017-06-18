@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Utilities
+﻿namespace Utilities
 {
     public class Window
     {
-        internal readonly int Width = 0;
-        internal readonly int Height = 0;
+        public readonly int Width = 0;
+        public readonly int Height = 0;
         internal readonly int FrameWidth = 0;
         internal readonly int FrameHeight = 0;
         internal const char VerticalBorder = '║';

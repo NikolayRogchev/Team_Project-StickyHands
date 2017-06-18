@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Models
 {
@@ -39,7 +38,19 @@ namespace Models
             }
         }
 
-        
+        public bool IsDead(int height, int width)
+        {
+            if (this.Position.X < 2 || 
+                this.Position.X >= width ||
+                this.Position.Y < 3 ||
+                this.Position.Y >= height - 4)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public string GetStats()
         {
             string info = GetPlayerInfo();
