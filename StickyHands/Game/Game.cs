@@ -62,7 +62,10 @@ namespace Game
                         printer.PrintEnemy(newEnemy);
                     }
                 }
-                printer.PrintTime(watch.Elapsed);
+                if (watch.Elapsed.Seconds % 1 == 0)
+                {
+                    printer.PrintTime(watch.Elapsed);
+                }
             }, null, 1000, 1000);
 
             startupHelper.SetProperties();
