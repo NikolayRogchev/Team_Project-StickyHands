@@ -12,6 +12,7 @@ namespace Utilities
 
         public void SetProperties()
         {
+            Console.WindowWidth = Window.Width;
             Console.CursorVisible = false;
             Console.SetBufferSize(Window.Width, Window.Height);
             Console.WindowHeight = Window.Height;

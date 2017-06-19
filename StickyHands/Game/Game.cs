@@ -11,6 +11,31 @@ namespace Game
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
+                StartGame();
+                Console.Write($"Do you want to play again? Y/N: " + Environment.NewLine);
+                ConsoleKeyInfo key = Console.ReadKey();
+                while (true)
+                {
+                    if (key.Key == ConsoleKey.N)
+                    {
+                        return;
+                    }
+                    if (key.Key == ConsoleKey.Y)
+                    {
+                        break;
+                    }
+                    Console.WriteLine(Environment.NewLine + "Wrong key! Please enter 'Y' for yes or 'N' for no.");
+                    key = Console.ReadKey();
+                }
+            }
+            
+        }
+
+        private static void StartGame()
+        {
+            Console.Clear();
             Console.Write("Enter your name: ");
             Player player = new Player(Console.ReadLine());
             Console.Clear();
@@ -56,6 +81,7 @@ namespace Game
                     if (player.IsDead(consoleWindow.Height, consoleWindow.Width) ||
                         enemyGenerator.IsPlayerKilled(player))
                     {
+                        timer.Dispose();
                         printer.EndGame(player);
                         return;
                     }
