@@ -125,7 +125,7 @@ namespace Utilities
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
-            Console.WriteLine(Environment.NewLine + "\tGAME OVER");
+            Console.WriteLine(Environment.NewLine + "\tGAME OVER" + Environment.NewLine);
             Console.WriteLine("\tPlayer: " + player.Name);
             Console.WriteLine(string.Format($"\tTotal coins collected: {player.CoinsCollected.Count}" + Environment.NewLine + $"\tTotal points: {player.Points}" + Environment.NewLine));
 

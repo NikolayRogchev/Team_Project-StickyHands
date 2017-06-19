@@ -28,9 +28,14 @@ namespace Game
                 {
                     Coin newCoin = coinGenerator.GenerateCoin(consoleWindow, random);
                     printer.PrintCoin(newCoin);
-
-                    Enemy newEnemy = enemyGenerator.GenerateEnemy(consoleWindow, random);
-                    printer.PrintEnemy(newEnemy);
+                }
+                if (watch.Elapsed.Seconds % 2 == 0)
+                {
+                    if (enemyGenerator.Enemies.Count < 15)
+                    {
+                        Enemy newEnemy = enemyGenerator.GenerateEnemy(consoleWindow, random);
+                        printer.PrintEnemy(newEnemy);
+                    }
                 }
                 printer.PrintTime(watch.Elapsed);
             }, null, 1000, 1000);
@@ -48,7 +53,8 @@ namespace Game
                     Direction newDirection = GetDirection(key.Key);
                     printer.ClearPlayer(player);
                     player.Move(newDirection);
-                    if (player.IsDead(consoleWindow.Height, consoleWindow.Width))
+                    if (player.IsDead(consoleWindow.Height, consoleWindow.Width) ||
+                        enemyGenerator.IsPlayerKilled(player))
                     {
                         printer.EndGame(player);
                         return;
