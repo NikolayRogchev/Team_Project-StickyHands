@@ -7,15 +7,15 @@ namespace Utilities
     public class CoinGenerator
     {
         private Dictionary<char, int> coinsAvailible =  new Dictionary<char, int>();
-        private char[] coins = { '$', '£', '€', '¥', '¢' };
+        private char[] coins = { '1', '2', '3', '5', '7' };
         public CoinGenerator()
         {
             this.Coins = new HashSet<Coin>();
-            coinsAvailible.Add('$', 10);
-            coinsAvailible.Add('£', 20);
-            coinsAvailible.Add('€', 30);
-            coinsAvailible.Add('¥', 5);
-            coinsAvailible.Add('¢', 1);
+            coinsAvailible.Add('1', 10);
+            coinsAvailible.Add('2', 20);
+            coinsAvailible.Add('3', 30);
+            coinsAvailible.Add('5', 50);
+            coinsAvailible.Add('7', 70);
         }
         public HashSet<Coin> Coins { get; set; }
 
