@@ -72,8 +72,11 @@ namespace Utilities
         }
         public void PrintEnemy(Enemy enemy)
         {
+            var originalColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(enemy.Position.X, enemy.Position.Y);
             Console.Write(enemy.Symbol);
+            Console.ForegroundColor = originalColor;
         }
         public void ClearCoins(CoinGenerator coinGenerator)
         {
@@ -89,8 +92,11 @@ namespace Utilities
         }
         public void PrintPlayer(Player player)
         {
+            var originalColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
             Console.Write(player.Body);
+            Console.ForegroundColor = originalColor;
         }
         public void ClearPlayer(Player player)
         {
