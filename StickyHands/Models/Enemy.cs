@@ -15,5 +15,7 @@ namespace Models
         }
         public char Symbol { get; set; }
         public Position Position { get; set; }
+
+       
     }
 }

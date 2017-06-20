@@ -11,12 +11,14 @@ namespace Models
             this.Position = new Position(Console.WindowWidth / 2, Console.WindowHeight / 2);
             this.CoinsCollected = new Stack<Coin>();
             this.Points = 0;
+            this.Lives = 1;
             this.Body = "O";
         }
         public string Name { get; set; }
         public int Points { get; set; }
         public Position Position { get; set; }
         public Stack<Coin> CoinsCollected { get; set; }
+        public int Lives { get; set; }
         public string Body { get; set; }
 
         public void Move(Direction direction)
@@ -60,7 +62,7 @@ namespace Models
 
         public string GetPlayerStats()
         {
-            return string.Format($"\tTotal coins collected: [{this.CoinsCollected.Count}]. Total points: [{this.Points}]");
+            return string.Format($"\tTotal coins collected: [{this.CoinsCollected.Count}]. Total points: [{this.Points}].  LIVES: [{this.Lives}]");
         }
 
         private string GetPlayerInfo()

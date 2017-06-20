@@ -7,7 +7,7 @@ using Models;
 
 namespace Utilities
 {
-   public class EnemyGenerator
+    public class EnemyGenerator
     {
         public EnemyGenerator()
         {
@@ -30,8 +30,14 @@ namespace Utilities
             {
                 if (enemy.Position.Equals(player.Position))
                 {
-                    return true;
+                    if (player.Lives == 0)
+                    {
+                        return true;
+                    }
+                    player.Lives--;
+
                 }
+
             }
             return false;
         }

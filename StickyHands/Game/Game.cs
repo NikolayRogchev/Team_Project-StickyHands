@@ -30,7 +30,7 @@ namespace Game
                     key = Console.ReadKey();
                 }
             }
-            
+
         }
 
         private static void StartGame()
@@ -119,12 +119,20 @@ namespace Game
 
         public static void CollectCoin(Player player, CoinGenerator coinGenerator)
         {
+
             Coin coin = coinGenerator.Coins.FirstOrDefault(c => c.Position.Equals(player.Position));
             if (coin != null)
             {
+
+
                 player.Points += coin.Value;
                 player.CoinsCollected.Push(coin);
                 coinGenerator.Coins.Remove(coin);
+                if (player.CoinsCollected.Count % 3 == 0)
+                {
+                    player.Lives++;
+
+                }
             }
         }
     }
