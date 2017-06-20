@@ -126,6 +126,7 @@ namespace Game
 
 
                 player.Points += coin.Value;
+                Console.Beep(1000, 100);
                 player.CoinsCollected.Push(coin);
                 coinGenerator.Coins.Remove(coin);
                 if (player.CoinsCollected.Count % 3 == 0)

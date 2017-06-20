@@ -35,6 +35,7 @@ namespace Utilities
                         return true;
                     }
                     player.Lives--;
+                    Console.Beep(100,100);
 
                 }
 
